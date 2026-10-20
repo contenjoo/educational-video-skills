@@ -79,7 +79,7 @@ def main():
     report["manual_checks"] = ["Confirm actual source recording exists and has no unwanted personal information.",
                                "Confirm the selected host can invoke its model; login-status alone does not prove it."]
     if args.mode == "canva":
-        report["manual_checks"] += ["Confirm Canva account/team and a supported connector or browser tool.",
+        report["manual_checks"] += ["Confirm the source account and a supported connector or browser tool.",
                                     "Check video design type, upload source support, voice availability, and actual playback in the editor."]
     report["status"] = "missing_required_tools" if missing else ("prerequisites_need_attention" if report["actions"] else "prerequisites_checked_runtime_not_verified")
     encoded = json.dumps(report, ensure_ascii=False, indent=2)

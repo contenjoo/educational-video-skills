@@ -1,12 +1,14 @@
 ---
 name: remotion-lesson-video
-description: 실제 제품 조작 녹화와 내레이션·자막을 Remotion으로 편집해 따라 하기 교육영상을 만든다. 코드 기반 영상 제작, 여러 차시, 다국어 강의에 사용한다. Canva에서 편집할 원본이 목적이면 canva-video-maker를 선택한다.
+description: 실제 조작 녹화·음성·자막을 Remotion으로 편집해 교육영상을 만든다. / Create educational videos from real screen recordings, narration and captions with Remotion.
 license: MIT
 ---
 
 # 리모션 교육영상 만들기
 
 학습자가 실제 화면을 보고 과업을 끝낼 수 있는 교육영상을 만든다. Claude와 Codex에서 같은 절차를 사용한다. 특정 운영체제·계정·목소리·녹화 앱·개인 경로를 전제하지 않는다.
+
+[English instructions](SKILL.en.md) · 한국어
 
 ## 시작과 재개
 

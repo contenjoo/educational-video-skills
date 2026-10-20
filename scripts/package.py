@@ -13,6 +13,7 @@ def main():
     for name in SKILLS:
         skill = ROOT / "skills" / name
         files = [skill / "SKILL.md", skill / "agents" / "openai.yaml"]
+        files += [skill / "SKILL.en.md"]
         files += sorted((skill / "references").glob("*.md"))
         files += sorted((skill / "scripts").glob("*.py"))
         destination = output / f"{name}.zip"

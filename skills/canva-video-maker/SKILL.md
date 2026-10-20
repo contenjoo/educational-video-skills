@@ -1,17 +1,19 @@
 ---
 name: canva-video-maker
-description: 실제 Canva 화면 캡처와 한국어 대본·음성을 Python/Pillow·FFmpeg로 교육영상 MP4·SRT로 제작한다. 기존 캔바교육영상만들기 방식의 이식형 스킬이며 Canva 편집기 안에서 영상을 편집하는 요청에는 사용하지 않는다.
+description: 실제 화면 캡처·대본·음성을 Python/Pillow·FFmpeg로 MP4·SRT로 만든다. / Create educational MP4 videos and SRT subtitles from real screenshots, scripts and narration with Python/Pillow and FFmpeg.
 license: MIT
 ---
 
-# 캔바 교육영상 만들기 · 캡처 기반
+# 캡처 교육영상 만들기
 
-실제 화면 → 화면 확인 후 대본 확정 → 장면별 음성 → Pillow 화면 카드 → FFmpeg 인코딩 → 재생 검수 순서로 제작한다. 기존 캔바 교육영상 제작 프로젝트의 공통 절차를 독립 실행형으로 옮겼다. 기존 프로젝트의 1,000줄 렌더 어댑터나 강의별 규칙을 그대로 복제한 것은 아니다. Remotion·React·Canva 영상 타임라인을 사용하지 않는다.
+실제 화면 → 화면 확인 후 대본 확정 → 장면별 음성 → Pillow 화면 카드 → FFmpeg 인코딩 → 재생 검수 순서로 제작한다. 기존 교육영상 제작 프로젝트의 공통 절차를 독립 실행형으로 옮겼다. 기존 프로젝트의 1,000줄 렌더 어댑터나 강의별 규칙을 그대로 복제한 것은 아니다. 동봉 Python 렌더러로 로컬에서 제작한다.
+
+[English instructions](SKILL.en.md) · 한국어
 
 ## 시작
 
 - 학습 대상·완성 과업·분량·언어·화면 자료를 확인한다. 실제 화면에서 확인한 기능만 설명하고 사용자의 기존 자료를 보존한다.
-- Python 3.9+, Pillow, FFmpeg/FFprobe, 한국어를 지원하는 폰트 파일이 필요하다. `scripts/preflight.py --mode canva`로 검사한다. 정확한 실행법과 입력 규약은 [references/canva-workflow.md](references/canva-workflow.md)를 읽는다.
+- Python 3.9+, Pillow, FFmpeg/FFprobe, 한국어를 지원하는 폰트 파일이 필요하다. `scripts/preflight.py --mode canva`로 검사한다. 정확한 실행법과 입력 규약은 [references/capture-workflow.md](references/capture-workflow.md)를 읽는다.
 - 실행 가능한 터미널이 없는 앱은 제작 준비까지 가능하다. 파일을 렌더하지 않았는데 완성됐다고 말하지 않는다. 어느 제품의 특정 MCP 이름·개인 경로·목소리에도 의존하지 않는다.
 
 ## 실제 화면과 대본
@@ -32,4 +34,4 @@ license: MIT
 
 [references/quality.md](references/quality.md)에 따라 파일 디코드·해상도·음성·자막 범위와 시작·중간·끝 재생을 확인한다. SRT는 장면별 실제 음성 길이 기준이며 단어별 정밀 정렬이 아니다. 전사·강제 정렬 도구가 있으면 보정하고 없으면 그 한계를 기록한다. 자동 검사·AI 화면 검토·사람의 전편 청취를 구분한다.
 
-MP4, SRT, 대본, lesson.json과 캡처/음성 원본, 렌더 영수증을 전달한다. 기본 완료 범위는 로컬 제작이다. Canva 업로드·공개 공유·기존 강의 교체는 별도 요청 범위에서만 한다. 오류가 나면 [references/first-run.md](references/first-run.md)를 읽고 해당 원인만 수정한다.
+MP4, SRT, 대본, lesson.json과 캡처/음성 원본, 렌더 영수증을 전달한다. 기본 완료 범위는 로컬 제작이다. 제품 업로드·공개 공유·기존 강의 교체는 별도 요청 범위에서만 한다. 오류가 나면 [references/first-run.md](references/first-run.md)를 읽고 해당 원인만 수정한다.
