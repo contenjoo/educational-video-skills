@@ -1,4 +1,4 @@
 interface:
-  display_name: "캔바영상 만들기"
-  short_description: "Canva에서 편집 가능한 실제 화면·음성·자막 교육영상 제작"
-  default_prompt: "$canva-video-maker로 Canva에서 편집 가능한 음성 설명 교육영상을 만들어줘."
+  display_name: "캔바 교육영상 만들기 · 캡처 기반"
+  short_description: "실제 Canva 캡처와 음성을 Python·FFmpeg로 교육영상 제작"
+  default_prompt: "$canva-video-maker로 실제 Canva 화면 캡처 기반 교육영상 MP4와 자막을 만들어줘."

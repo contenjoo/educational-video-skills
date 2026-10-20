@@ -14,6 +14,7 @@ def main():
         skill = ROOT / "skills" / name
         files = [skill / "SKILL.md", skill / "agents" / "openai.yaml"]
         files += sorted((skill / "references").glob("*.md"))
+        files += sorted((skill / "scripts").glob("*.py"))
         destination = output / f"{name}.zip"
         with ZipFile(destination, "w", compression=ZIP_DEFLATED) as archive:
             for path in files:
