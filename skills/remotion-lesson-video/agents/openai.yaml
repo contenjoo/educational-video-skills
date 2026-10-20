@@ -1,0 +1,4 @@
+interface:
+  display_name: "리모션 교육영상 만들기"
+  short_description: "실제 조작 녹화와 음성·자막을 편집해 따라 하는 교육영상 제작"
+  default_prompt: "$remotion-lesson-video로 실제 조작 녹화를 활용한 교육영상을 만들어줘."
