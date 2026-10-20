@@ -22,3 +22,5 @@ ffmpeg -v error -i output/lesson.mp4 -f null -
 Adapt paths to actual files. Without these tools, report available player/metadata checks rather than guessing results. Use EBU R128 or another suitable measure for loudness; average dB is not LUFS. Set targets for the destination and voice. Black/silent segments may be intentional and require interpretation.
 
 Record final SHA-256, check time, commands/tools, scope, findings and unperformed checks. Compute hashes with tools such as Python hashlib. A changed video needs review tied to its new hash.
+
+For the shared final-file/SRT/transcript checker, warning handling and destination-specific readback, follow [production checks](production-checks.en.md). These technical checks never certify pronunciation or a published replacement.

@@ -9,3 +9,5 @@
 - Ensure SRT times increase and stay within the video. Verify words and timing against playback or transcription/alignment. Summary cards are not full narration subtitles.
 - Play beginning, middle and end. State when human full-length listening was not performed.
 - Deliver MP4, SRT, script, inputs and receipt. Do not infer upload, publication or course replacement from local production success.
+
+For the shared final-file/SRT/transcript checker, warning handling and destination-specific readback, follow [production checks](production-checks.en.md). These technical checks never certify pronunciation or a published replacement.

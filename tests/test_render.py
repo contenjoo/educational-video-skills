@@ -3,10 +3,12 @@ import importlib.util
 import json
 from pathlib import Path
 import tempfile
+import sys
 import unittest
 from PIL import Image
 
 SCRIPT = Path(__file__).resolve().parents[1]/'skills/canva-video-maker/scripts/render_lesson.py'
+sys.path.insert(0, str(SCRIPT.parent))
 spec = importlib.util.spec_from_file_location('renderer', SCRIPT)
 r = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(r)

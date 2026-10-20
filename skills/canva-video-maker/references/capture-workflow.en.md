@@ -47,6 +47,12 @@ This is a format example, not review or generation evidence. Replace every place
       "reviewed_at": "Actual review timestamp",
       "sha256": "Reviewed image SHA-256"
     },
+    "preview_review": {
+      "approved": false,
+      "reviewed_by": "Actual final-card reviewer",
+      "reviewed_at": "Actual review timestamp",
+      "sha256": "Exact reviewed PNG SHA-256 from preview.json"
+    },
     "audio_provenance": {
       "provider": "Own recording or actual TTS provider",
       "generation_id": "Actual recording session or generation job ID",
@@ -62,4 +68,13 @@ This is a format example, not review or generation evidence. Replace every place
 
 Use `actual_screen_capture` for direct screenshots or `actual_recording_frame` for real recording frames. Provenance is a supplied source statement, not remote authentication by the renderer.
 
-The final render.json status is `rendered_pending_playback_review`. Do not mark unperformed full listening as approved. Subtitle times span each scene's actual speech; split long narration into sentence scenes or refine using forced alignment.
+The final render.json status is `rendered_pending_playback_review`. Do not mark unperformed full listening as approved. Default subtitle times are estimated within each scene's actual speech; refine using verified timing or forced alignment.
+
+
+## v3 preview review and subtitles
+
+`--frames` writes final card PNGs and preview.json with their hashes. Inspect every card for target meaning/position, language, clipping, whitespace and privacy. Only after inspection set each scene's `preview_review.approved`, actual reviewer/time and exact PNG SHA. This is a review record, not a command to approve automatically. `--validate` now generates cards in memory and rejects missing/stale preview review or invalid crop/highlight geometry. Changing title, caption, source, font, order or highlights changes the rendered card hash and requires review. This new required field is the migration from v2; do not copy old approval without viewing the new frame.
+
+The renderer now writes short SRT phrases plus narration.txt and checks that all approved narration text survives. Default phrase times are estimated within measured scene audio and explicitly marked as estimates. For actual aligned timing, provide each scene's optional `subtitles` list, e.g. `[{"start": 0.0, "end": 1.4, "text": "Open the text menu."}, {"start": 1.4, "end": 3.2, "text": "Select Add a text box."}]`. Text must cover that scene's entire approved display narration, with positive increasing non-overlapping times within speech duration. Do not fabricate alignment times. `subtitle_max_chars` defaults to 42, accepts 10–120 and controls automatic phrase length; adapt to the language/layout.
+
+The final render runs the bundled media/subtitle checker once and embeds its result in render.json. Silence/empty audio fails; word omissions, zero/overlapping cue intervals and truncated subtitles fail. Readability warnings still need review. It never modifies speech speed or inserts pauses inside narration. See [production checks](production-checks.en.md) for remaining manual checks and destination verification.

@@ -11,6 +11,14 @@ Two skills for Claude and Codex that turn real screen media, scripts and narrati
 
 Free to use, modify and redistribute under MIT. No personal accounts, API keys, fixed voices or existing course originals are included. These are independent production workflows.
 
+## v3: incorporating production failures
+
+Both skills now include Korean and English guidance based on observed method misunderstandings, empty number slots, misplaced highlights, audio/subtitle omissions, optimistic estimates, incomplete localization/folders and unverified public replacements. Inspect the original project, finish a short complete sample plus a difficult representative scene, then scale and verify each requested destination.
+
+Both ZIPs bundle `scripts/check_media.py` for final decoding, audio, subtitle intervals and approved transcript preservation. Human listening, semantic agreement and published-version verification remain unverified. These checks cannot prevent every failure or guarantee 100% completion.
+
+**Upgrading from v2:** the screenshot renderer now requires a per-scene `preview_review`. Inspect the actual `--frames` PNGs before recording their hashes from preview.json. Changed text, highlights or layout invalidate old preview approval. Long narration is split into readable SRT phrases; default phrase times are explicitly estimated. See [input/migration instructions](skills/canva-video-maker/references/capture-workflow.en.md) and [production checks](skills/remotion-lesson-video/references/production-checks.en.md). Existing identifiers and Claude/Codex installation paths are preserved.
+
 ## Requirements
 
 - Both: real source media, your own recordings or available TTS, and the necessary file, terminal and browser tools.

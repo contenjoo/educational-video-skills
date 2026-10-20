@@ -1,3 +1,24 @@
+# v3 regression validation · 2026-10-21
+
+[한국어](VALIDATION.md) · English
+
+This update converts observed production failures into workflow decisions and technical checks. Private transcripts, voices and screenshots are not distributed.
+
+- Twelve unit/installation regressions passed: full text preservation when splitting long narration, rejected zero/overlapping/missing/out-of-range subtitles, BOM/CRLF SRT, invalid geometry, stale preview reviews and existing-output/installation preservation.
+- Actual negative fixtures were executed: a caption changed after review, an out-of-bounds crop and a genuinely silent WAV each failed --validate; valid inputs passed.
+- Claude Code actually read both installed skills and production-checks guidance, generated screenshot previews, visually inspected them, recorded truthful AI review hashes, validated and rendered. It caught a clipped menu label and a rectangle crossing resize controls, corrected them and reviewed a new preview.
+- Codex desktop executed the installed screenshot workflow and incorporated the visual corrections found during the Claude run, then re-reviewed and re-rendered. Both used the same three existing actual capture frames and supplied narration. They did not independently generate fresh capture/audio.
+- Both new screenshot outputs are 17.788s, 1920×1080 H.264/AAC with four SRT cues. Full decode, complete display-transcript preservation and audio checks passed without errors/warnings. Both hosts also executed the new shared MP4/SRT checker on the existing 50.112s Remotion output; it passed. No fresh Remotion render was produced in this regression run.
+- This added validation did not include full player playback, human full-length listening, pronunciation approval or public replacement. Keep the earlier 20 October playback evidence separate from this code regression run. Preview SHA validation detects changed files; it cannot externally certify reviewer judgment or semantic correctness.
+
+New screenshot MP4 SHA-256:
+- Claude Code: `0bfb4298fb79832878cbb88c9f7c43c1d17ab85488c2241b6830e76779eda4a7`
+- Codex desktop: `0bfb4298fb79832878cbb88c9f7c43c1d17ab85488c2241b6830e76779eda4a7`
+
+The same inputs and corrected frame compositions produced the same final hash. These are not counted as independent fresh captures. Both standalone ZIPs are checked for Korean/English instructions, bundled tools and Claude/Codex installation.
+
+---
+
 # Usage validation · 2026-10-20
 
 [한국어](VALIDATION.md) · English

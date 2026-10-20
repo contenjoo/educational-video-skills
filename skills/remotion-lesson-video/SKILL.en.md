@@ -4,6 +4,12 @@
 
 Create educational videos that let learners complete a real task from actual screen recordings. Use the same workflow in Claude and Codex without assuming a specific OS, account, voice, recorder or personal path.
 
+## Avoid repeating observed failures
+
+When the user names an existing project, inspect its actual inputs and renderer first. Follow plan/script → actual screens and script correction → narration → short complete sample plus a difficult representative scene → batch production → final review → requested destination verification. Correct wrong screens, marks and unnatural speech before scaling. This does not mean asking for approval at every intermediate step.
+
+Read [production checks](references/production-checks.en.md) before execution and apply relevant items. Verify before/after click states, marker timing, curriculum/speech agreement, localized deliverables and the learner-facing version. Reuse successful checks and existing records rather than adding paperwork. Use bundled `scripts/check_media.py` for final media/SRT/approved display transcript; leave non-automatable checks explicitly unverified.
+
 ## Start and resume
 
 - Run `python3 scripts/preflight.py --mode remotion --network` from this skill folder. Add `--tts` only for the macOS Korean system voice; other systems do not require `say`. A prerequisite check is not production success.
