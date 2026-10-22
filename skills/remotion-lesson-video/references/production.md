@@ -1,6 +1,6 @@
 # 프로젝트 구성과 렌더
 
-[English](production.en.md) · 한국어
+[English](production.en.md) · 한국어 · [日本語](production.ja.md)
 
 ## 실행 환경
 

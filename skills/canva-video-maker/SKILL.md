@@ -1,6 +1,6 @@
 ---
 name: canva-video-maker
-description: 실제 화면 캡처·대본·음성을 Python/Pillow·FFmpeg로 MP4·SRT로 만든다. / Create educational MP4 videos and SRT subtitles from real screenshots, scripts and narration with Python/Pillow and FFmpeg.
+description: 실제 화면 캡처·대본·음성을 Python/Pillow·FFmpeg로 MP4·SRT로 만든다. / Create educational MP4 videos and SRT subtitles from real screenshots, scripts and narration with Python/Pillow and FFmpeg. / 韓国語・英語・日本語の依頼で教育動画を制作する。
 license: MIT
 ---
 
@@ -8,7 +8,15 @@ license: MIT
 
 실제 화면 → 화면 확인 후 대본 확정 → 장면별 음성 → Pillow 화면 카드 → FFmpeg 인코딩 → 재생 검수 순서로 제작한다. 기존 교육영상 제작 프로젝트의 공통 절차를 독립 실행형으로 옮겼다. 기존 프로젝트의 1,000줄 렌더 어댑터나 강의별 규칙을 그대로 복제한 것은 아니다. 동봉 Python 렌더러로 로컬에서 제작한다.
 
-[English instructions](SKILL.en.md) · 한국어
+한국어 · [English](SKILL.en.md) · [日本語](SKILL.ja.md)
+
+## 사용 언어 / Language / 使用言語
+
+사용자가 지정한 언어를 우선하고, 지정이 없으면 요청 언어로 설명한다. 영어 요청은 [English](SKILL.en.md), 일본어 요청은 [日本語](SKILL.ja.md)를 읽고 해당 언어의 참고 문서를 사용한다. 안내 언어와 영상·음성·자막 언어는 별개이며 명시한 제작 언어를 유지한다. 명령어·API·JSON 키·검사 상태 식별자는 번역하지 않는다.
+
+Follow the user's requested language; otherwise use the language of their request. Read [English instructions](SKILL.en.md) for English or [Japanese instructions](SKILL.ja.md) for Japanese. Keep the conversation language separate from the requested video, narration and subtitle languages. Preserve command names, API names, JSON keys and status identifiers.
+
+利用者が指定した言語を優先し、指定がなければ依頼文の言語で説明する。日本語の依頼では[日本語の指示](SKILL.ja.md)と対応する参考文書を読む。案内の言語と動画・音声・字幕の言語を分け、明示された制作言語を維持する。コマンド名・API名・JSONキー・検査状態は翻訳しない。
 
 ## 반복 오류를 줄이는 순서
 

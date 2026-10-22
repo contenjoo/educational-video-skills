@@ -1,6 +1,6 @@
 # Production checks drawn from actual failures
 
-[한국어](production-checks.md) · English
+[한국어](production-checks.md) · English · [日本語](production-checks.ja.md)
 
 These rules translate observed production and conversation failures into decisions and checks. No private accounts, voices, paths or course originals are required.
 

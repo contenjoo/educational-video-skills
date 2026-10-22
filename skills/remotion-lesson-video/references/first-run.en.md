@@ -1,6 +1,6 @@
 # First run and recovery
 
-[한국어](first-run.md) · English
+[한국어](first-run.md) · English · [日本語](first-run.ja.md)
 
 1. Verify that the host discovers and reads the skill. Produce one short lesson in a new folder and preserve existing courses.
 2. Inspect source duration, video stream and actual actions. If footage is missing, request the required capture rather than inventing it.

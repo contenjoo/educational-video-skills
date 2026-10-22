@@ -1,6 +1,6 @@
 # Project setup and rendering
 
-[한국어](production.md) · English
+[한국어](production.md) · English · [日本語](production.ja.md)
 
 ## Environment
 

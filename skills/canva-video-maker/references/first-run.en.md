@@ -1,6 +1,6 @@
 # First-run troubleshooting
 
-[한국어](first-run.md) · English
+[한국어](first-run.md) · English · [日本語](first-run.ja.md)
 
 - `No module named PIL`: install Pillow into the exact Python used to run the renderer, including the selected virtual environment.
 - Missing FFmpeg/FFprobe: install through a system package manager and check PATH. This workflow does not require Node.js.

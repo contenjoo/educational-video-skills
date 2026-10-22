@@ -1,4 +1,4 @@
 interface:
-  display_name: "캡처 교육영상 | Screenshot lessons"
-  short_description: "캡처·음성 교육영상 / Lessons from screenshots and narration"
-  default_prompt: "$canva-video-maker로 실제 화면 캡처 기반 교육영상과 자막을 만들어줘. Create a lesson video and subtitles from real screenshots."
+  display_name: "캡처 교육영상 | Screenshot lessons | キャプチャ教育動画"
+  short_description: "교육영상 / Educational videos / 教育動画 — 한국어·English·日本語"
+  default_prompt: "$canva-video-maker로 실제 화면 캡처 기반 교육영상과 자막을 만들어줘. Create a lesson video and subtitles from real screenshots. 日本語の教育動画と字幕を作成してください。"

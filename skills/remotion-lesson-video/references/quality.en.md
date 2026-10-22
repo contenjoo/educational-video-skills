@@ -1,6 +1,6 @@
 # Final video review
 
-[한국어](quality.md) · English
+[한국어](quality.md) · English · [日本語](quality.ja.md)
 
 Evaluate file integrity and the learner's ability to complete the task separately.
 

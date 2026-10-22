@@ -1,6 +1,6 @@
 # 최종 영상 검수
 
-[English](quality.en.md) · 한국어
+[English](quality.en.md) · 한국어 · [日本語](quality.ja.md)
 
 사용자가 바로 따라 할 수 있는지와 파일이 정상인지 분리해서 확인한다.
 

@@ -1,6 +1,6 @@
 # 시행착오 재발을 줄이는 제작 기준
 
-[English](production-checks.en.md) · 한국어
+[English](production-checks.en.md) · 한국어 · [日本語](production-checks.ja.md)
 
 실제 제작·대화에서 드러난 오류를 작업 판단과 검증으로 옮긴 기준이다. 개인 계정·화자·파일 위치·기존 강의 원본은 필요하지 않다.
 

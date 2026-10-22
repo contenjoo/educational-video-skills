@@ -36,6 +36,15 @@ def check():
             errors.append(f"{name}: unexpected frontmatter fields")
         if meta.get("license") != "MIT":
             errors.append(f"{name}: missing license")
+        for language in ("en", "ja"):
+            localized = skill / f"SKILL.{language}.md"
+            if not localized.is_file():
+                errors.append(f"{name}: missing {language} skill instructions")
+            for original in (skill / "references").glob("*.md"):
+                if original.name.endswith((".en.md", ".ja.md")):
+                    continue
+                if not original.with_name(f"{original.stem}.{language}.md").is_file():
+                    errors.append(f"{name}: missing {language} reference {original.name}")
         ui = yaml.safe_load((skill / "agents" / "openai.yaml").read_text(encoding="utf-8"))
         interface = ui.get("interface", {})
         if "$" + name not in interface.get("default_prompt", ""):

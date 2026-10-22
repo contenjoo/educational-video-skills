@@ -1,6 +1,6 @@
 # 첫 실행에서 막히는 지점
 
-[English](first-run.en.md) · 한국어
+[English](first-run.en.md) · 한국어 · [日本語](first-run.ja.md)
 
 - `No module named PIL`: 렌더를 실행하는 같은 Python에 Pillow를 설치한다. 가상환경을 썼으면 해당 Python 경로로 실행한다.
 - `ffmpeg`/`ffprobe` 없음: 시스템 패키지 관리자로 설치하고 PATH를 확인한다. Node.js는 이 방식에 필요하지 않다.

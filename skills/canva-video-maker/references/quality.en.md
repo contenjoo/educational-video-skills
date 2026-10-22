@@ -1,6 +1,6 @@
 # Result review
 
-[한국어](quality.md) · English
+[한국어](quality.md) · English · [日本語](quality.ja.md)
 
 - Inspect every frame image against the source and explanation. Check actual click targets, Korean/other script rendering, clipping and legibility.
 - Check masking of personal information and production-tool remnants. Changed images require renewed review.

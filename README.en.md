@@ -1,6 +1,6 @@
 # Educational Video Skills
 
-**[한국어](README.md) · [English](README.en.md)**
+**[한국어](README.md) · [English](README.en.md) · [日本語](README.ja.md)**
 
 Two skills for Claude and Codex that turn real screen media, scripts and narration into educational videos.
 
@@ -13,7 +13,7 @@ Free to use, modify and redistribute under MIT. No personal accounts, API keys, 
 
 ## v3: incorporating production failures
 
-Both skills now include Korean and English guidance based on observed method misunderstandings, empty number slots, misplaced highlights, audio/subtitle omissions, optimistic estimates, incomplete localization/folders and unverified public replacements. Inspect the original project, finish a short complete sample plus a difficult representative scene, then scale and verify each requested destination.
+Both skills now include Korean, English and Japanese guidance based on observed method misunderstandings, empty number slots, misplaced highlights, audio/subtitle omissions, optimistic estimates, incomplete localization/folders and unverified public replacements. Inspect the original project, finish a short complete sample plus a difficult representative scene, then scale and verify each requested destination.
 
 Both ZIPs bundle `scripts/check_media.py` for final decoding, audio, subtitle intervals and approved transcript preservation. Human listening, semantic agreement and published-version verification remain unverified. These checks cannot prevent every failure or guarantee 100% completion.
 
@@ -66,7 +66,7 @@ Start a new conversation after installation. Check other skill search paths for 
 2. Upload and enable each ZIP in the custom skills interface. See the [official instructions](https://support.claude.com/en/articles/12512180-use-skills-in-claude).
 3. Check available terminal, file and browser tools, then request a video.
 
-Use individual skill ZIPs rather than the full repository ZIP. Each contains a top-level skill folder, `SKILL.md`, and Korean and English instructions. Actual rendering depends on app and organization capabilities.
+Use individual skill ZIPs rather than the full repository ZIP. Each contains a top-level skill folder, `SKILL.md`, and Korean, English and Japanese instructions. Actual rendering depends on app and organization capabilities.
 
 ## Check prerequisites
 
@@ -124,3 +124,7 @@ Report problems through [Issues](https://github.com/contenjoo/educational-video-
 ## License
 
 [MIT](LICENSE) applies to the skills, documentation and tools in this repository. External services, recordings, fonts, visuals and voices remain subject to their owners' rights and terms.
+
+## v3.1: Korean, English and Japanese
+
+Both ZIPs include `SKILL.md`, `SKILL.en.md`, `SKILL.ja.md` and references in all three languages. Ask in your preferred language. Specify the video, narration and subtitle languages separately when they differ from the conversation language.

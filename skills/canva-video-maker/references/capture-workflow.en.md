@@ -1,6 +1,6 @@
 # Running and lesson.json
 
-[한국어](capture-workflow.md) · English
+[한국어](capture-workflow.md) · English · [日本語](capture-workflow.ja.md)
 
 A lightweight implementation of an existing capture → script → narration → Pillow → FFmpeg production workflow. It excludes private branding, course lists, publication permissions and fixed-voice rules.
 

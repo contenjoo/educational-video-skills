@@ -1,8 +1,12 @@
 # Remotion lesson videos
 
-[한국어](SKILL.md) · English
+[한국어](SKILL.md) · English · [日本語](SKILL.ja.md)
 
 Create educational videos that let learners complete a real task from actual screen recordings. Use the same workflow in Claude and Codex without assuming a specific OS, account, voice, recorder or personal path.
+
+## Language
+
+Follow an explicitly requested language, otherwise respond in the language of the request. Korean, English and Japanese instructions are included. Keep the conversation language separate from the requested video, narration and subtitle languages. Use language-appropriate fonts, voices and actual localized menu names. Preserve commands, API names, JSON keys and status identifiers. For Japanese requests, read [Japanese instructions](SKILL.ja.md).
 
 ## Avoid repeating observed failures
 

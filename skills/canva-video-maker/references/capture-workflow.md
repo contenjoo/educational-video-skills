@@ -1,6 +1,6 @@
 # 실행과 lesson.json
 
-[English](capture-workflow.en.md) · 한국어
+[English](capture-workflow.en.md) · 한국어 · [日本語](capture-workflow.ja.md)
 
 이 스킬은 기존 교육영상 프로젝트의 캡처·대본·음성·Pillow·FFmpeg 절차를 이식한 경량 실행 도구다. 개인 프로젝트의 브랜드 자산·강의 목록·공개 권한·고정 화자 규칙을 포함하지 않는다.
 
