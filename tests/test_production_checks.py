@@ -3,6 +3,9 @@ import hashlib
 import importlib.util
 from pathlib import Path
 import sys
+import shutil
+import subprocess
+import tempfile
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -67,6 +70,39 @@ class PreviewIntegrity(unittest.TestCase):
     def test_each_package_has_the_same_standalone_checker(self):
         other=ROOT/'skills/remotion-lesson-video/scripts/check_media.py'
         self.assertEqual(other.read_bytes(),(SCRIPTS/'check_media.py').read_bytes())
+
+
+@unittest.skipUnless(shutil.which('ffmpeg') and shutil.which('ffprobe'), 'FFmpeg required')
+class SilentDeliverable(unittest.TestCase):
+    def test_silence_is_explicit_and_cannot_hide_missing_narration_or_audible_audio(self):
+        with tempfile.TemporaryDirectory() as directory:
+            folder = Path(directory)
+            video = folder/'silent.mp4'
+            base = ['ffmpeg', '-v', 'error', '-nostdin', '-f', 'lavfi', '-i',
+                    'color=c=blue:s=64x64:r=10:d=1']
+            subprocess.run(base + ['-an', '-c:v', 'mpeg4', str(video)], check=True,
+                           stdin=subprocess.DEVNULL, capture_output=True)
+            srt = folder/'lesson.srt'
+            srt.write_text('1\n00:00:00,000 --> 00:00:00,900\nHello\n')
+            expected = folder/'captions.txt'
+            expected.write_text('Hello')
+            result = media.inspect(video, srt, expected, silent=True)
+            self.assertEqual(result['errors'], [])
+            self.assertEqual(result['audio_requirement'], 'explicit_silent')
+            self.assertTrue(result['subtitle_text_checked'])
+            with self.assertRaisesRegex(ValueError, 'Audio stream missing'):
+                media.inspect(video)
+            for source, should_pass in [('anullsrc=r=44100:cl=mono', True),
+                                        ('sine=frequency=440:duration=1', False)]:
+                output = folder/('empty-audio.mp4' if should_pass else 'audible.mp4')
+                subprocess.run(base + ['-f', 'lavfi', '-i', source, '-t', '1',
+                               '-c:v', 'mpeg4', '-c:a', 'aac', str(output)], check=True,
+                               stdin=subprocess.DEVNULL, capture_output=True)
+                result = media.inspect(output, silent=True)
+                self.assertEqual(not result['errors'], should_pass)
+                self.assertEqual(not media.inspect(output)['errors'], not should_pass)
+            expected.write_text('Hello missing words')
+            self.assertTrue(media.inspect(video, srt, expected, silent=True)['errors'])
 
 
 if __name__=='__main__':

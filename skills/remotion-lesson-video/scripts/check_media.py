@@ -85,7 +85,7 @@ def check_subtitles(cues, duration, expected_text=None, max_chars=42):
     return errors, warnings
 
 
-def inspect(media, srt=None, expected_text=None, max_chars=42):
+def inspect(media, srt=None, expected_text=None, max_chars=42, silent=False):
     metadata = probe(media)
     duration = float(metadata['format']['duration'])
     if not math.isfinite(duration) or duration <= .2:
@@ -93,11 +93,15 @@ def inspect(media, srt=None, expected_text=None, max_chars=42):
     streams = metadata['streams']
     if not any(s['codec_type'] == 'video' for s in streams):
         raise ValueError('Video stream missing')
-    if not any(s['codec_type'] == 'audio' for s in streams):
+    has_audio = any(s['codec_type'] == 'audio' for s in streams)
+    if not has_audio and not silent:
         raise ValueError('Audio stream missing')
     errors, warnings = [], []
-    peak = audio_peak(media)
-    if peak <= -80:
+    peak = audio_peak(media) if has_audio else None
+    if silent:
+        if peak is not None and peak > -80:
+            errors.append('Audible audio found in an explicitly silent deliverable')
+    elif peak <= -80:
         errors.append('Audio is silent or effectively empty')
     command(['ffmpeg', '-v', 'error', '-xerror', '-nostdin', '-i', media, '-f', 'null', '-'])
     count = None
@@ -109,10 +113,11 @@ def inspect(media, srt=None, expected_text=None, max_chars=42):
         warnings.extend(more_warnings)
         count = len(cues)
     return {'status': 'failed' if errors else 'technical_checks_passed_pending_review',
-            'mp4_sha256': sha(media), 'duration': duration, 'audio_peak_dbfs': peak if math.isfinite(peak) else None,
+            'mp4_sha256': sha(media), 'duration': duration, 'audio_peak_dbfs': peak if peak is not None and math.isfinite(peak) else None,
             'full_decode': 'passed', 'subtitle_cues': count,
             'subtitle_text_checked': bool(srt and expected_text), 'errors': errors, 'warnings': warnings,
-            'streams': streams, 'human_full_listening': 'not_verified',
+            'streams': streams, 'human_full_listening': 'not_applicable_silent' if silent else 'not_verified',
+            'audio_requirement': 'explicit_silent' if silent else 'narration_required',
             'semantic_screen_speech_agreement': 'not_verified', 'published_version': 'not_verified'}
 
 
@@ -120,6 +125,7 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('media', type=Path)
     p.add_argument('--srt', type=Path)
+    p.add_argument('--silent', action='store_true', help='Only for explicitly requested silent output; reject audible audio')
     p.add_argument('--expected-text', type=Path, help='Plain approved display transcript, no headings or timestamps')
     p.add_argument('--max-line-chars', type=int, default=42, help='Warning threshold, adapt to language/layout')
     p.add_argument('--output', type=Path)
@@ -127,7 +133,7 @@ def main():
     if args.expected_text and not args.srt:
         p.error('--expected-text requires --srt')
     try:
-        result = inspect(args.media.resolve(), args.srt, args.expected_text, args.max_line_chars)
+        result = inspect(args.media.resolve(), args.srt, args.expected_text, args.max_line_chars, args.silent)
     except (OSError, ValueError, KeyError, subprocess.CalledProcessError) as exc:
         result = {'status': 'failed', 'errors': [str(exc)], 'human_full_listening': 'not_verified'}
     body = json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False) + '\n'
